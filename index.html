@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <style>
+      .trigger {
+        height: 50vh;
+        background: #ccc;
+        display: grid;
+        place-items: center;
+      }
+
+      .modal {
+        position: absolute;
+        padding: 0.5rem;
+        bottom: 20vh;
+        color: white;
+        background: black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="trigger" class="trigger">Hover me</div>
+    <div id="modalContainer"></div>
+
+    <script>
+      const trigger = document.querySelector("#trigger");
+      const modalContainer = document.querySelector("#modalContainer");
+
+      trigger.addEventListener("mouseover", () => {
+        modalContainer.innerHTML = `
+          <div class="modal">
+            <h1>Bro!</h1>
+          </div>
+        `;
+      });
+
+      trigger.addEventListener("mouseleave", () => {
+        modalContainer.innerHTML = "";
+      });
+    </script>
+  </body>
+</html>
