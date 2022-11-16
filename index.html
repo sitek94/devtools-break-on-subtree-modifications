@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Parcel Sandbox</title>
+    <title>Break on subtree modifications</title>
     <meta charset="UTF-8" />
     <style>
       .trigger {
         height: 50vh;
+        width: 100%;
+        border: 0;
         background: #ccc;
         display: grid;
         place-items: center;
@@ -22,14 +24,14 @@
   </head>
 
   <body>
-    <div id="trigger" class="trigger">Hover me</div>
+    <button id="trigger" class="trigger">Hover me</button>
     <div id="modalContainer"></div>
 
     <script>
       const trigger = document.querySelector("#trigger");
       const modalContainer = document.querySelector("#modalContainer");
 
-      trigger.addEventListener("mouseover", () => {
+      trigger.addEventListener("mousedown", () => {
         modalContainer.innerHTML = `
           <div class="modal">
             <h1>Bro!</h1>
@@ -37,9 +39,9 @@
         `;
       });
 
-      trigger.addEventListener("mouseleave", () => {
-        modalContainer.innerHTML = "";
-      });
+      ["blur", "mouseleave", "mouseup"].forEach((event) =>
+        trigger.addEventListener(event, () => (modalContainer.innerHTML = ""))
+      );
     </script>
   </body>
 </html>
