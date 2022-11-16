@@ -24,16 +24,16 @@
   </head>
 
   <body>
-    <button id="trigger" class="trigger">Hover me</button>
-    <div id="modalContainer"></div>
+    <button id="trigger" class="trigger">Show tooltip on "mousedown" event</button>
+    <div id="tooltipContainer"></div>
 
     <script>
       const trigger = document.querySelector("#trigger");
-      const modalContainer = document.querySelector("#modalContainer");
+      const tooltipContainer = document.querySelector("#tooltipContainer");
 
       trigger.addEventListener("mousedown", () => {
-        modalContainer.innerHTML = `
-          <div class="modal">
+        tooltipContainer.innerHTML = `
+          <div class="tooltip">
             <h1>Bro!</h1>
           </div>
         `;
